@@ -1,17 +1,18 @@
 <template>
   <div>
     <Loading :loading="this.loading"></Loading>
-
     <h1>{{ msg }}</h1>
 
     <div>
       <div>
-        <input type="text" @keyup.enter="getPosts(conpassApiUrl)" v-model="keyword">
-        <select class="" name="" v-model="selectState" @change="getPosts(conpassApiUrl)">
-          <option v-for="state in stateData" val="state.label">
-            {{ state.label }}
-          </option>
-        </select>
+        <input type="text" @keyup.enter="getPosts(conpassApiUrl)" v-model="keyword" placeholder="keyword">
+        <span class="selectWrap">
+          <select class="" name="" v-model="selectState" @change="getPosts(conpassApiUrl)">
+            <option v-for="state in stateData" val="state.label">
+              {{ state.label }}
+            </option>
+          </select>
+        </span>
       </div>
 
       <p>
@@ -25,12 +26,12 @@
 
       <div class="pagination">
         <a href="#" v-if="postStart > 0" @click.stop.prevent="paging('prev')">PREV</a>
+        <a href="#" v-if="postStart > 0" @click.stop.prevent="paging('top')">TOP</a>
         <a href="#" v-if="available - postStart > postCount" @click.stop.prevent="paging('next')">NEXT</a>
       </div>
 
       <div class="resultsWrap">
           <div class="resultsWrap__single" v-for="(item, index) in jsonData" @click.self="">
-
             <div class="date">
               {{ item.started_at }}.
             </div>
@@ -55,6 +56,7 @@
 
       <div class="pagination">
         <a href="#" v-if="postStart > 0" @click.stop.prevent="paging('prev')">PREV</a>
+        <a href="#" v-if="postStart > 0" @click.stop.prevent="paging('top')">TOP</a>
         <a href="#" v-if="available - postStart > postCount" @click.stop.prevent="paging('next')">NEXT</a>
       </div>
 
@@ -74,7 +76,7 @@ export default {
   data () {
     return {
       asdf: true,
-      msg: 'Connpass API検索',
+      msg: 'Connpass イベント検索',
       conpassApiUrl: 'https://connpass.com/api/v1/event/',
       keyword: 'vue',
       googleApiUrl: 'https://maps.googleapis.com/maps/api/staticmap',
@@ -137,6 +139,10 @@ export default {
         this.nowPage++
         this.postStart = this.postStart + this.postCount
         this.getPosts(this.conpassApiUrl, this.postStart)
+      } else if (pushed === 'top') {
+        this.nowPage = 1
+        this.postStart = 0
+        this.getPosts(this.conpassApiUrl, 0)
       }
     }
   },
@@ -150,6 +156,7 @@ export default {
 <style lang="scss" scoped>
 html,body{
   font-size:12px;
+  background: #eee;
 }
 
 *{
@@ -185,7 +192,7 @@ button{
   border: none;
   color: #fff;
   font-size:1.5rem;
-  padding: 0.5rem 2rem;
+  padding: 0.75rem 3rem;
   cursor:pointer;
   border:1px solid  #42b983;
   transition: 0.2s;
@@ -193,7 +200,6 @@ button{
   &:hover{
     color: #42b983;
     background: #fff;
-
   }
 }
 
@@ -241,7 +247,6 @@ p.subtit{
     width:32%;
     max-width:480px;
     padding:2rem 1.5rem;
-    border:1px solid #ddd;
     margin:1rem auto;
 
     .mapImg{
@@ -270,6 +275,22 @@ p.subtit{
 .list-enter, .list-leave-to /* .list-leave-active for below version 2.1.8 */ {
   opacity: 0;
   transform: translateY(30px);
+}
+
+.selectWrap{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+
+  &:after{
+    content: "▼";
+    font-size: 0.7rem;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  }
 }
 
 .pagination{
