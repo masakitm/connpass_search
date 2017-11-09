@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'Footer',
+  name: 'FooterCont',
   data: function () {
     return {
       github: 'https://github.com/masakitm/',

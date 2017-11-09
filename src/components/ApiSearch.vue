@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <Modal /> -->
     <Loading :loading="this.loading"></Loading>
     <h1>{{ msg }}</h1>
 
@@ -20,8 +21,8 @@
       </p>
 
       <div class="resultInfo" v-show="available">
-        検索結果  全 {{ available }} 件　
-        {{ nowPage }} / {{ pageCount }}ページ
+        検索結果  全 <span class="resultInfo__num">{{ available }}</span> 件　
+        <span class="resultInfo__num">{{ nowPage }}</span>/<span class="resultInfo__num">{{ pageCount }}</span>ページ
       </div>
 
       <div class="pagination">
@@ -31,9 +32,9 @@
       </div>
 
       <div class="resultsWrap">
-          <div class="resultsWrap__single" v-for="(item, index) in jsonData" @click.self="">
+          <div class="resultsWrap__single" v-for="(item, index) in jsonData">
             <div class="date">
-              {{ item.started_at }}.
+              {{ item.started_at }}
             </div>
 
             <div class="title">
@@ -68,6 +69,7 @@
 import Vue from 'vue'
 import VueJsonp from 'vue-jsonp'
 import Loading from './Loading'
+import Modal from './Modal'
 const state = require('../state.json')
 Vue.use(VueJsonp)
 
@@ -75,7 +77,6 @@ export default {
   name: 'ApiSearch',
   data () {
     return {
-      asdf: true,
       msg: 'Connpass イベント検索',
       conpassApiUrl: 'https://connpass.com/api/v1/event/',
       keyword: 'vue',
@@ -88,6 +89,7 @@ export default {
       nowPage: 0 + 1,
       stateData: state,
       selectState: '東京都',
+      modalData: '',
       loading: true
     }
   },
@@ -115,11 +117,13 @@ export default {
         this.jsonData = json.events
         this.jsonData.map(function (value) {
           let gmapPlace
+
           if (value['lat'] && value['lon']) {
             gmapPlace = value['lat'] + ',' + value['lon']
           } else {
             gmapPlace = value['address']
           }
+
           value['started_at'] = value['started_at'].substring(0, value['started_at'].indexOf('T'))
           value['gmapSrc'] = _this.googleApiUrl + '?key=' + _this.googleApiKey + '&size=480x320&maptype=roadmap' + '&markers=color:red%7C' + gmapPlace
           value['gmapLink'] = 'https://www.google.co.jp/maps/place/' + value['address']
@@ -147,7 +151,8 @@ export default {
     }
   },
   components: {
-    Loading
+    Loading,
+    Modal
   }
 }
 </script>
@@ -186,6 +191,9 @@ a {
   font-weight:bold;
 }
 
+*:focus {
+  outline: none;
+}
 
 button{
   background: #42b983;
@@ -233,6 +241,12 @@ p.subtit{
 
 .resultInfo{
   margin: 2rem auto;
+
+  &__num{
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #df689e;
+  }
 }
 
 .resultsWrap{

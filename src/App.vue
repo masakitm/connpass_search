@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     <ApiSearch />
-    <Footer />
+    <FooterCont />
   </div>
 </template>
 
 <script>
 import ApiSearch from './components/ApiSearch'
-import Footer from './components/Footer'
+import FooterCont from './components/FooterCont'
 
 export default {
   name: 'app',
   components: {
     ApiSearch,
-    Footer
+    FooterCont
   }
 }
 </script>
