@@ -1,194 +1,242 @@
 [
     {
-        "label": "　",
-        "slug": "　"
+        "label": "全国",
+        "slug": "",
+        "value":""
     },
     {
         "label": "北海道",
-        "slug": "hokkaido"
+        "slug": "hokkaido",
+        "value":"北海道"
     },
     {
         "label": "青森県",
-        "slug": "aomori"
+        "slug": "aomori",
+        "value": "青森"
     },
     {
         "label": "岩手県",
-        "slug": "iwate"
+        "slug": "iwate",
+        "value": "岩手"
     },
     {
         "label": "宮城県",
-        "slug": "miyagi"
+        "slug": "miyagi",
+        "value": "宮城"
     },
     {
         "label": "秋田県",
-        "slug": "akita"
+        "slug": "akita",
+        "value": "秋田"
     },
     {
         "label": "山形県",
-        "slug": "yamagata"
+        "slug": "yamagata",
+        "value": "山形"
     },
     {
         "label": "福島県",
-        "slug": "fukushima"
+        "slug": "fukushima",
+        "value": "福島"
     },
     {
         "label": "茨城県",
-        "slug": "ibaraki"
+        "slug": "ibaraki",
+        "value": "茨城"
     },
     {
         "label": "栃木県",
-        "slug": "tochigi"
+        "slug": "tochigi",
+        "value": "栃木"
     },
     {
         "label": "群馬県",
-        "slug": "gunma"
+        "slug": "gunma",
+        "value": "群馬"
     },
     {
         "label": "埼玉県",
-        "slug": "saitama"
+        "slug": "saitama",
+        "value": "埼玉"
     },
     {
         "label": "千葉県",
-        "slug": "chiba"
+        "slug": "chiba",
+        "value": "千葉"
     },
     {
         "label": "東京都",
-        "slug": "tokyo"
+        "slug": "tokyo",
+        "value": "東京"
     },
     {
         "label": "神奈川県",
-        "slug": "kanagawa"
+        "slug": "kanagawa",
+        "value": "神奈川"
     },
     {
         "label": "新潟県",
-        "slug": "nigata"
+        "slug": "nigata",
+        "value": "新潟"
     },
     {
         "label": "富山県",
-        "slug": "toyama"
+        "slug": "toyama",
+        "value": "富山"
     },
     {
         "label": "石川県",
-        "slug": "ishikawa"
+        "slug": "ishikawa",
+        "value": "石川"
     },
     {
         "label": "福井県",
-        "slug": "fukui"
+        "slug": "fukui",
+        "value": "福井"
     },
     {
         "label": "山梨県",
-        "slug": "yamanashi"
+        "slug": "yamanashi",
+        "value": "山梨"
     },
     {
         "label": "長野県",
-        "slug": "nagano"
+        "slug": "nagano",
+        "value": "長野"
     },
     {
         "label": "岐阜県",
-        "slug": "gifu"
+        "slug": "gifu",
+        "value": "岐阜"
     },
     {
         "label": "静岡県",
-        "slug": "shizuoka"
+        "slug": "shizuoka",
+        "value": "静岡"
     },
     {
         "label": "愛知県",
-        "slug": "aichi"
+        "slug": "aichi",
+        "value": "愛知"
     },
     {
         "label": "三重県",
-        "slug": "mie"
+        "slug": "mie",
+        "value": "三重"
     },
     {
         "label": "滋賀県",
-        "slug": "shiga"
+        "slug": "shiga",
+        "value": "滋賀"
     },
     {
         "label": "京都府",
-        "slug": "kyoto"
+        "slug": "kyoto",
+        "value": "京都"
     },
     {
         "label": "大阪府",
-        "slug": "osaka"
+        "slug": "osaka",
+        "value": "大阪"
     },
     {
         "label": "兵庫県",
-        "slug": "hyogo"
+        "slug": "hyogo",
+        "value": "兵庫"
     },
     {
         "label": "奈良県",
-        "slug": "nara"
+        "slug": "nara",
+        "value": "奈良"
     },
     {
         "label": "和歌山県",
-        "slug": "wakayama"
+        "slug": "wakayama",
+        "value": "和歌山"
     },
     {
         "label": "鳥取県",
-        "slug": "tottori"
+        "slug": "tottori",
+        "value": "鳥取"
     },
     {
         "label": "島根県",
-        "slug": "shimane"
+        "slug": "shimane",
+        "value": "島根"
     },
     {
         "label": "岡山県",
-        "slug": "okayama"
+        "slug": "okayama",
+        "value": "岡山"
     },
     {
         "label": "広島県",
-        "slug": "hiroshima"
+        "slug": "hiroshima",
+        "value": "広島"
     },
     {
         "label": "山口県",
-        "slug": "yamaguchi"
+        "slug": "yamaguchi",
+        "value": "山口"
     },
     {
         "label": "徳島県",
-        "slug": "tokushima"
+        "slug": "tokushima",
+        "value": "徳島"
     },
     {
         "label": "香川県",
-        "slug": "kagawa"
+        "slug": "kagawa",
+        "value": "香川"
     },
     {
         "label": "愛媛県",
-        "slug": "ehime"
+        "slug": "ehime",
+        "value": "愛媛"
     },
     {
         "label": "高知県",
-        "slug": "kochi"
+        "slug": "kochi",
+        "value": "高知"
     },
     {
         "label": "福岡県",
-        "slug": "fukuoka"
+        "slug": "fukuoka",
+        "value": "福岡"
     },
     {
         "label": "佐賀県",
-        "slug": "saga"
+        "slug": "saga",
+        "value": "佐賀"
     },
     {
         "label": "長崎県",
-        "slug": "nagasaki"
+        "slug": "nagasaki",
+        "value": "長崎"
     },
     {
         "label": "熊本県",
-        "slug": "kumamoto"
+        "slug": "kumamoto",
+        "value": "熊本"
     },
     {
         "label": "大分県",
-        "slug": "oita"
+        "slug": "oita",
+        "value": "大分"
     },
     {
         "label": "宮崎県",
-        "slug": "miyazaki"
+        "slug": "miyazaki",
+        "value": "宮崎"
     },
     {
         "label": "鹿児島県",
-        "slug": "kagoshima"
+        "slug": "kagoshima",
+        "value": "鹿児島"
     },
     {
         "label": "沖縄県",
-        "slug": "okinawa"
+        "slug": "okinawa",
+        "value": "沖縄"
     }
 ]

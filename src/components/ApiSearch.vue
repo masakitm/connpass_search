@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <Modal /> -->
     <Loading :loading="this.loading"></Loading>
     <h1>{{ msg }}</h1>
 
@@ -9,7 +8,7 @@
         <input type="text" @keyup.enter="getPosts(conpassApiUrl)" v-model="keyword" placeholder="keyword">
         <span class="selectWrap">
           <select class="" name="" v-model="selectState" @change="getPosts(conpassApiUrl)">
-            <option v-for="state in stateData" val="state.label">
+            <option v-for="state in stateData" :value="state.value">
               {{ state.label }}
             </option>
           </select>
@@ -20,9 +19,11 @@
         <button @click="getPosts(conpassApiUrl)">Search!</button>
       </p>
 
-      <div class="resultInfo" v-show="available">
+      <div class="resultInfo">
         検索結果  全 <span class="resultInfo__num">{{ available }}</span> 件　
-        <span class="resultInfo__num">{{ nowPage }}</span>/<span class="resultInfo__num">{{ pageCount }}</span>ページ
+        <template v-if="available">
+          <span class="resultInfo__num">{{ nowPage }}</span>/<span class="resultInfo__num">{{ pageCount }}</span>ページ
+        </template>
       </div>
 
       <div class="pagination">
@@ -32,27 +33,27 @@
       </div>
 
       <div class="resultsWrap">
-          <div class="resultsWrap__single" v-for="(item, index) in jsonData">
-            <div class="date">
-              {{ item.started_at }}
-            </div>
-
-            <div class="title">
-              <a :href="item.event_url" target="_blank">
-                {{ item.title }}
-              </a>
-            </div>
-
-            <div class="address">
-              {{ item.address }}
-            </div>
-
-            <div class="">
-              <a :href="item.gmapLink" target="_blank">
-                <img class="mapImg" :src="item.gmapSrc" alt="">
-              </a>
-            </div>
+        <div class="resultsWrap__single" v-for="(item, index) in jsonData" v-if="item">
+          <div class="date">
+            {{ item.started_at }}
           </div>
+
+          <div class="title">
+            <a :href="item.event_url" target="_blank">
+              {{ item.title }}
+            </a>
+          </div>
+
+          <div class="address">
+            {{ item.address }}
+          </div>
+
+          <div class="">
+            <a :href="item.gmapLink" target="_blank">
+              <img class="mapImg" :src="item.gmapSrc" alt="">
+            </a>
+          </div>
+        </div>
       </div>
 
       <div class="pagination">
@@ -69,7 +70,6 @@
 import Vue from 'vue'
 import VueJsonp from 'vue-jsonp'
 import Loading from './Loading'
-import Modal from './Modal'
 const state = require('../state.json')
 Vue.use(VueJsonp)
 
@@ -88,7 +88,7 @@ export default {
       postCount: 12,
       nowPage: 0 + 1,
       stateData: state,
-      selectState: '東京都',
+      selectState: '東京',
       modalData: '',
       loading: true
     }
@@ -151,8 +151,7 @@ export default {
     }
   },
   components: {
-    Loading,
-    Modal
+    Loading
   }
 }
 </script>
@@ -211,7 +210,6 @@ button{
   }
 }
 
-
 input{
   width: 35vw;
   display: inline-block;
@@ -226,13 +224,17 @@ select{
   padding: 10px 10px;
   border-radius: 0;
   border: 1px solid #ddd;
-  background: #fff;
+  background: #eee;
   text-align: center;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   vertical-align: top;
   cursor:pointer;
+}
+
+input,select{
+  height: 3rem;
 }
 
 p.subtit{
@@ -243,9 +245,8 @@ p.subtit{
   margin: 2rem auto;
 
   &__num{
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #df689e;
+    font-size: 1.4rem;
+    /* color: #df689e; */
   }
 }
 
@@ -286,6 +287,7 @@ p.subtit{
 .list-enter-active, .list-leave-active {
   transition: all 1s;
 }
+
 .list-enter, .list-leave-to /* .list-leave-active for below version 2.1.8 */ {
   opacity: 0;
   transform: translateY(30px);
@@ -308,7 +310,7 @@ p.subtit{
 }
 
 .pagination{
-  padding: 1rem 0;
+  padding: 1rem 0 0;
 
   a{
     display: inline-block;
