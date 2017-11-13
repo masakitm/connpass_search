@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- main component -->
     <Loading :loading="this.loading"></Loading>
     <h1>{{ msg }}</h1>
 
